@@ -119,11 +119,13 @@ paper_server_install()
             build_id="$(echo $builds | awk -F "," '{print $NF}')"
             echo $build_id
             paper_server_download="https://papermc.io/api/v2/projects/paper/versions/${selected_minor_version}/builds/${build_id}/downloads/paper-${selected_minor_version}-${build_id}.jar"
-            echo $paper_server_download
+            echo -e "{$GREEN}Downloading you selected version of Paper now! Please be patient."
             curl -LO $paper_server_download
             break
         fi
     done
+    echo -e "${GREEN}Successfully downloaded the latest ${PURPLE}${selected_minor_version}${GREEN} version of Paper.\n${ORANGE}Quitting script now!${NC}"
+    exit
 }
 
 ##############################
